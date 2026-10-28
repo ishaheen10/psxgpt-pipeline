@@ -1,0 +1,221 @@
+{
+  "dataset": "user-fact-search-first-turn-v1",
+  "run": "2026-07-30T17-30-01-088Z",
+  "judge": "manual review of the Markdown behind every result card visible in the company and facet groups",
+  "label_definition": {
+    "relevant_page": "The page directly concerns the requested disclosure, event, table, or source-browsing target. Mere token overlap is false.",
+    "relevant_group_leader": "The first page displayed in a company and facet group is directly relevant.",
+    "need_coverage": "Complete means the visible groups cover the search need as asked. Partial means useful pages are present but an evidence type, company, or requested period is missing. Missing means the visible pages do not directly address the need.",
+    "calculation_policy": "No calculation, synthesis, or analyst-answer completeness is required."
+  },
+  "summary": {
+    "route_contracts": "20/20",
+    "zero_result_queries": "0/20",
+    "relevant_group_leaders": "23/31",
+    "relevant_visible_pages": "63/87",
+    "queries_with_all_group_leaders_relevant": "12/20",
+    "queries_with_complete_visible_need_coverage": "6/20"
+  },
+  "cases": [
+    {
+      "id": "engroh_recent_insider_buying",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 3,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "complete",
+      "note": "Recent ENGROH buy-back and director or substantial-shareholder interest disclosures are directly relevant."
+    },
+    {
+      "id": "ubl_recent_announcements",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 3,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "complete",
+      "note": "Three distinct and recent UBL exchange notices."
+    },
+    {
+      "id": "ubl_announcements_statements_outlook",
+      "display_groups": 2,
+      "visible_pages": 6,
+      "relevant_pages": 6,
+      "relevant_group_leaders": 2,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "partial",
+      "note": "Announcements and outlook pages are strong, but the combined statements-and-outlook group contains no primary financial-statement page."
+    },
+    {
+      "id": "engroh_cashflow_by_subsidiary",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 1,
+      "relevant_group_leaders": 0,
+      "all_group_leaders_relevant": false,
+      "need_coverage": "partial",
+      "note": "The exact subsidiary financial-summary page is third; generic consolidated and unconsolidated cash-flow pages precede it."
+    },
+    {
+      "id": "nrl_segment_breakdown_five_years",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 1,
+      "relevant_group_leaders": 0,
+      "all_group_leaders_relevant": false,
+      "need_coverage": "partial",
+      "note": "Fuel-segment narrative outranks the page that actually contains base-oil and other-segment evidence, and five-year coverage is absent."
+    },
+    {
+      "id": "fabl_individual_deposit_share",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 1,
+      "relevant_group_leaders": 0,
+      "all_group_leaders_relevant": false,
+      "need_coverage": "partial",
+      "note": "The deposit-composition page containing individuals is third behind current-deposit and deposit-ratio pages."
+    },
+    {
+      "id": "cnergy_refinery_marketing_income",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 3,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "partial",
+      "note": "All three pages contain refinery and marketing segment results, but the first screen does not cover five years."
+    },
+    {
+      "id": "gvgl_auto_glass_market_share",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 0,
+      "relevant_group_leaders": 0,
+      "all_group_leaders_relevant": false,
+      "need_coverage": "missing",
+      "note": "Production utilization, customer concentration, and product revenue do not state auto-glass market share."
+    },
+    {
+      "id": "ubl_deposits_six_quarters",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 2,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "partial",
+      "note": "The newest deposit note is first, but the first screen has duplicate 2026 pages and does not cover six distinct quarters."
+    },
+    {
+      "id": "interloop_balance_sheet",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 1,
+      "relevant_group_leaders": 0,
+      "all_group_leaders_relevant": false,
+      "need_coverage": "partial",
+      "note": "Generic financial-overview keys and horizontal analysis appear instead of the primary statement of financial position."
+    },
+    {
+      "id": "mebl_liability_breakdown",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 3,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "partial",
+      "note": "All pages concern liability composition, but the visible set is not a complete balance-sheet liability breakdown."
+    },
+    {
+      "id": "glaxo_oncology_segment",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 3,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "complete",
+      "note": "Reportable-segment pages directly establish the pharmaceutical segment structure needed to check for a separate oncology segment."
+    },
+    {
+      "id": "bipl_current_account_growth",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 0,
+      "relevant_group_leaders": 0,
+      "all_group_leaders_relevant": false,
+      "need_coverage": "missing",
+      "note": "The ranker confuses customer current-account deposits with the bank's balances held in current accounts."
+    },
+    {
+      "id": "jdws_latest_annual_report_pages",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 3,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "complete",
+      "note": "For a source-browsing query, current table-of-contents pages are directly useful because they enumerate the annual report's available sections."
+    },
+    {
+      "id": "ubl_sector_exposure",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 3,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "complete",
+      "note": "The newest industry-sector exposure table ranks first, followed by directly related concentration tables."
+    },
+    {
+      "id": "agic_retained_profits_2025",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 1,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "partial",
+      "note": "The first page exposes 2025 accumulated profit, but the next two pages are not retained-profit disclosures."
+    },
+    {
+      "id": "otsu_syringe_manufacturing",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 0,
+      "relevant_group_leaders": 0,
+      "all_group_leaders_relevant": false,
+      "need_coverage": "missing",
+      "note": "The pages discuss IV solutions, plant capacity, cash flow, and property, but do not mention syringe manufacturing."
+    },
+    {
+      "id": "cement_expansion_go_live",
+      "display_groups": 4,
+      "visible_pages": 6,
+      "relevant_pages": 6,
+      "relevant_group_leaders": 4,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "partial",
+      "note": "The company grouping makes expansion evidence easy to browse, but expected commissioning dates are incomplete and the result set is not an exhaustive industry screen."
+    },
+    {
+      "id": "hbl_latest_cash_balance",
+      "display_groups": 1,
+      "visible_pages": 3,
+      "relevant_pages": 2,
+      "relevant_group_leaders": 1,
+      "all_group_leaders_relevant": true,
+      "need_coverage": "complete",
+      "note": "The newest quarterly cash note is first in consolidated and unconsolidated forms; the third page is weaker transition material."
+    },
+    {
+      "id": "bank_exposure_and_capital_ratios",
+      "display_groups": 8,
+      "visible_pages": 24,
+      "relevant_pages": 21,
+      "relevant_group_leaders": 7,
+      "all_group_leaders_relevant": false,
+      "need_coverage": "partial",
+      "note": "All four banks and both evidence needs are visibly grouped. Seven groups are strong; ABL capital ratios return glossary, marketing, and risk-overview pages instead of a ratio table."
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "dataset": "user-narrative-first-turn-v1",
+  "run": "2026-07-30T15-54-49-621Z",
+  "judge": "manual Markdown review",
+  "label_definition": "answer_bearing means the page directly contributes evidence required by this exact query; topical mentions and navigation pages are false",
+  "cases": [
+    {
+      "id": "investment_overview_lotchem",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [],
+      "excellent_first_three": false,
+      "note": "No executable route; initial validation conflicted on inferred industry scope and the retry timed out."
+    },
+    {
+      "id": "potential_investment_prl",
+      "route_contract_pass": true,
+      "top_page_answer_bearing": [true, true, true],
+      "excellent_first_three": true,
+      "note": "Quarterly economics, operating strategy, and company-specific SWOT evidence form a coherent investment evidence set."
+    },
+    {
+      "id": "business_framework_cnergy",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [],
+      "excellent_first_three": false,
+      "note": "No retrieval because the real user spelling CYNERGY was not grounded to CNERGY."
+    },
+    {
+      "id": "airlink_endeavours_and_financials",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [],
+      "excellent_first_three": false,
+      "note": "AIRLINK is absent from the current entity directory, so the otherwise sensible filing and announcement plan could not execute."
+    },
+    {
+      "id": "systems_macro_earnings_posture",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [],
+      "excellent_first_three": false,
+      "note": "System's was left unresolved and the plan collapsed quarterly and macro evidence into one filing facet."
+    },
+    {
+      "id": "natf_trajectory_deep_dive",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [],
+      "excellent_first_three": false,
+      "note": "Both router attempts exhausted the timeout; no pages were retrieved."
+    },
+    {
+      "id": "hinoon_sustainable_earnings",
+      "route_contract_pass": true,
+      "top_page_answer_bearing": [true, true, true],
+      "excellent_first_three": false,
+      "note": "Profitability history and the single-segment disclosure are useful, but the first three do not contain enough forward evidence about persistence."
+    },
+    {
+      "id": "fuel_shock_resilience_screen",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [false, true, false],
+      "excellent_first_three": false,
+      "note": "Shock Absorbers is a lexical false positive; only the Archroma risk page directly discusses cost pass-through."
+    },
+    {
+      "id": "interloop_profitability_drags",
+      "route_contract_pass": true,
+      "top_page_answer_bearing": [true, false, false],
+      "excellent_first_three": false,
+      "note": "Rank one directly explains margin pressure, but ranks two and three are a contents page and director-remuneration note."
+    },
+    {
+      "id": "pharma_peer_forward_risks",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [false, false, false],
+      "excellent_first_three": false,
+      "note": "Climate risk and report navigation pages do not answer the requested logistics, import-regulation, and peer-performance posture."
+    },
+    {
+      "id": "hubco_growth_outlook",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [],
+      "excellent_first_three": false,
+      "note": "No retrieval because the common HUBCO name was not grounded to ticker HUBC."
+    },
+    {
+      "id": "ismail_segment_drivers",
+      "route_contract_pass": true,
+      "top_page_answer_bearing": [true, true, true],
+      "excellent_first_three": true,
+      "note": "The first three contain segment earnings, strategy, capacity expansion, assets, liabilities, and capital expenditure."
+    },
+    {
+      "id": "dynea_governance_red_flags",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [false, true, true],
+      "excellent_first_three": false,
+      "note": "Board composition and related-party approval evidence are inspectable, but rank one is generic compliance and no page identifies a company-specific red flag."
+    },
+    {
+      "id": "interloop_budget_and_moat",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [false, false, false],
+      "excellent_first_three": false,
+      "note": "Generic risk-management pages contain neither the budget measures nor evidence distinguishing productivity from regulatory advantage."
+    },
+    {
+      "id": "natf_divestment_implications",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [],
+      "excellent_first_three": false,
+      "note": "The two-corpus plan was directionally correct but National Food's was not grounded to NATF, so it could not execute."
+    },
+    {
+      "id": "lci_growth_and_margins",
+      "route_contract_pass": true,
+      "top_page_answer_bearing": [true, true, false],
+      "excellent_first_three": false,
+      "note": "Historical profitability and strategy are useful; rank three is an effectively empty financial-performance page."
+    },
+    {
+      "id": "engroh_growth_drivers",
+      "route_contract_pass": true,
+      "top_page_answer_bearing": [true, true, true],
+      "excellent_first_three": true,
+      "note": "Holding-company earnings, portfolio composition, segment profit, and capital expenditure make the set immediately useful."
+    },
+    {
+      "id": "cement_expansion_timeline",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [false, false, false],
+      "excellent_first_three": false,
+      "note": "The results are old milestones and generic strategy, not ongoing projects with expected commissioning dates."
+    },
+    {
+      "id": "lucky_core_cash_cycle_and_projects",
+      "route_contract_pass": true,
+      "top_page_answer_bearing": [true, true, true],
+      "excellent_first_three": false,
+      "note": "Working-capital history and capital commitments are strong evidence, but the project result does not identify the projects themselves."
+    },
+    {
+      "id": "cynergico_underknown_facts",
+      "route_contract_pass": false,
+      "top_page_answer_bearing": [],
+      "excellent_first_three": false,
+      "note": "No retrieval because Cynergico was not grounded to CNERGY, and the open-ended request was reduced to one generic company-background facet."
+    }
+  ]
+}

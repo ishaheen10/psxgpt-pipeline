@@ -1,0 +1,47 @@
+# ── Data (large / regenerable / ported) — never in git ────────────────
+/data/
+/artifacts/
+/markdown_pages/
+/markdown_summary/
+/pdf_pages/
+/pdf_thumbnails/
+/database_pdfs/
+/announcement_documents/
+/announcement_markdown/
+/announcement_thumbnails/
+/macro_documents/
+/macro_pages/
+/macro_markdown/
+/macro_thumbnails/
+/macro_review/
+/psx_current_shares.json
+/authoritative_corpus/
+/authoritative_documents/
+/authoritative_markdown/
+/authoritative_pages/
+/authoritative_thumbnails/
+/tmp/
+
+# ── Python / env ──────────────────────────────────────────────────────
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+node_modules/
+dist-test/
+
+# ── Secrets ───────────────────────────────────────────────────────────
+.env
+*.pem
+
+# ── misc ──────────────────────────────────────────────────────────────
+.DS_Store
+.claude/
+*.log
+/review/
+/canonical_schema_fixed.json
+
+# test db
+psx_test.db
+*.db

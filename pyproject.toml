@@ -1,0 +1,29 @@
+[project]
+name = "psxgpt-pipeline"
+version = "0.1.0"
+description = "PSX financial-data pipeline — self-contained, runnable, publishes to D1"
+readme = "README.md"
+requires-python = ">=3.11"
+# Deliberate dependency set — each entry maps to a module actually imported by
+# pipeline code. Verified via import scan (see PIPELINE_SPEC.md / Phase 0).
+dependencies = [
+    # LLM / extraction (stage2 review, stage3 extract) — DeepSeek via OpenAI client
+    "openai>=1.42.0",
+    # HTTP (market fetch, misc API calls)
+    "requests>=2.31.0",
+    # progress bars (all stages)
+    "tqdm>=4.66.0",
+    # .env loading (stage1/2)
+    "python-dotenv>=1.0.0",
+    # stage1 ingest: PDF download (playwright), R2 upload (boto3),
+    # page split (pypdf), JPG render (pdf2image + Pillow)
+    "playwright>=1.40.0",
+    "boto3>=1.34.0",
+    "pypdf>=5.0.0",
+    "cryptography>=3.1",
+    "pdf2image>=1.17.0",
+    "Pillow>=10.0.0",
+    # stage1 OCR (Mistral) + stage2 re-OCR vision fallback (google-genai)
+    "mistralai>=1.2.0",
+    "google-genai>=1.38.0",
+]

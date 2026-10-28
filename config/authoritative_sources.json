@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "pk_psx",
+      "country": "PK",
+      "publisher": "Pakistan Stock Exchange",
+      "authority_type": "exchange",
+      "official_domains": [
+        "www.psx.com.pk",
+        "dps.psx.com.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "exchange_reports",
+          "cadence": "daily",
+          "landing_urls": [
+            "https://www.psx.com.pk/psx/exchange/psx-shareholder-information"
+          ],
+          "document_url_patterns": [
+            "(?i)/[^/?]*(?:annual|quarter|half.year|financial|sustainability|esg)[^/?]*\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_nepra",
+      "country": "PK",
+      "publisher": "National Electric Power Regulatory Authority",
+      "authority_type": "regulator",
+      "official_domains": [
+        "nepra.org.pk",
+        "www.nepra.org.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "state_of_industry",
+          "cadence": "daily",
+          "landing_urls": [
+            "https://www.nepra.org.pk/publications/State%20of%20Industry%20Reports.php"
+          ],
+          "document_url_patterns": [
+            "(?i)/publications/State(?:%20| )of(?:%20| )Industry(?:%20| )Reports/.*\\.pdf(?:$|[?#])"
+          ]
+        },
+        {
+          "id": "annual_reports",
+          "cadence": "daily",
+          "landing_urls": [
+            "https://www.nepra.org.pk/publications/Annual%20Reports.php"
+          ],
+          "document_url_patterns": [
+            "(?i)/publications/Annual(?:%20| )Reports/.*\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_ogra",
+      "country": "PK",
+      "publisher": "Oil and Gas Regulatory Authority",
+      "authority_type": "regulator",
+      "official_domains": [
+        "ogra.org.pk",
+        "www.ogra.org.pk"
+      ],
+      "enabled": false,
+      "disabled_reason": "First-party landing pages return HTTP 403 to requests and headless Chromium as of 2026-07-27.",
+      "landing_fetch": "auto",
+      "collections": [
+        {
+          "id": "notifications",
+          "cadence": "daily",
+          "landing_urls": [
+            "https://www.ogra.org.pk/notifications"
+          ],
+          "document_url_patterns": [
+            "(?i)/download/[0-9]+(?:$|[?#])",
+            "(?i)\\.pdf(?:$|[?#])"
+          ]
+        },
+        {
+          "id": "annual_reports",
+          "cadence": "weekly",
+          "landing_urls": [
+            "https://www.ogra.org.pk/ogra-annual-reports"
+          ],
+          "document_url_patterns": [
+            "(?i)/download/[0-9]+(?:$|[?#])",
+            "(?i)\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_ppa",
+      "country": "PK",
+      "publisher": "Pakistan Poultry Association",
+      "authority_type": "trade_body",
+      "official_domains": [
+        "pakistanpoultrycentral.pk",
+        "www.pakistanpoultrycentral.pk"
+      ],
+      "enabled": true,
+      "verify_tls": false,
+      "collections": [
+        {
+          "id": "annual_reports",
+          "cadence": "weekly",
+          "landing_urls": [
+            "http://pakistanpoultrycentral.pk/annual-report-2024-2025/"
+          ],
+          "document_url_patterns": [
+            "(?i)\\.pdf(?:$|[?#])"
+          ],
+          "link_text_patterns": [
+            "(?i)annual.report"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_fbr",
+      "country": "PK",
+      "publisher": "Federal Board of Revenue",
+      "authority_type": "tax_authority",
+      "official_domains": [
+        "fbr.gov.pk",
+        "www.fbr.gov.pk",
+        "download1.fbr.gov.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "year_books",
+          "cadence": "weekly",
+          "landing_urls": [
+            "https://www.fbr.gov.pk/fbr-year-books/132039"
+          ],
+          "document_url_patterns": [
+            "(?i)/Docs/.*\\.pdf(?:$|[?#])"
+          ],
+          "link_text_patterns": [
+            "(?i)year.?book"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_pbs",
+      "country": "PK",
+      "publisher": "Pakistan Bureau of Statistics",
+      "authority_type": "statistics_agency",
+      "official_domains": [
+        "pbs.gov.pk",
+        "www.pbs.gov.pk"
+      ],
+      "enabled": false,
+      "disabled_reason": "Large candidate collection is being backfilled in bounded batches before cron activation.",
+      "collections": [
+        {
+          "id": "publication_library",
+          "cadence": "daily",
+          "landing_urls": [
+            "https://www.pbs.gov.pk/publication-2/"
+          ],
+          "document_url_patterns": [
+            "(?i)/wp-content/uploads/.*\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_secp",
+      "country": "PK",
+      "publisher": "Securities and Exchange Commission of Pakistan",
+      "authority_type": "regulator",
+      "official_domains": [
+        "secp.gov.pk",
+        "www.secp.gov.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "annual_reports",
+          "cadence": "weekly",
+          "landing_urls": [
+            "https://www.secp.gov.pk/media-center/annual-reports/"
+          ],
+          "document_url_patterns": [
+            "(?i)/document/(?:secp-)?annual-report[^/?]*/\\?.*wpdmdl="
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_ccp",
+      "country": "PK",
+      "publisher": "Competition Commission of Pakistan",
+      "authority_type": "regulator",
+      "official_domains": [
+        "cc.gov.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "annual_reports",
+          "cadence": "weekly",
+          "landing_urls": [
+            "https://cc.gov.pk/home/annual_reports"
+          ],
+          "document_url_patterns": [
+            "(?i)/assets/images/Downloads/annual_report/.*\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_planning",
+      "country": "PK",
+      "publisher": "Planning Commission of Pakistan",
+      "authority_type": "government_ministry",
+      "official_domains": [
+        "pc.gov.pk",
+        "www.pc.gov.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "annual_plans",
+          "cadence": "weekly",
+          "landing_urls": [
+            "https://www.pc.gov.pk/web/annualplan"
+          ],
+          "document_url_patterns": [
+            "(?i)/uploads/annualplan/.*\\.pdf(?:$|[?#])"
+          ],
+          "document_exclude_url_patterns": [
+            "(?i)/uploads/annualplan/annualplan2018/Annual\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_finance",
+      "country": "PK",
+      "publisher": "Ministry of Finance Pakistan",
+      "authority_type": "government_ministry",
+      "official_domains": [
+        "finance.gov.pk",
+        "www.finance.gov.pk"
+      ],
+      "enabled": false,
+      "disabled_reason": "Large candidate collection is being backfilled in bounded batches before cron activation.",
+      "collections": [
+        {
+          "id": "economic_surveys",
+          "cadence": "weekly",
+          "landing_urls": [
+            "https://www.finance.gov.pk/"
+          ],
+          "follow_url_patterns": [
+            "(?i)/survey_(?:[0-9]{4}|[0-9]{2,4})\\.html"
+          ],
+          "max_follow_pages": 20,
+          "document_url_patterns": [
+            "(?i)/(?:survey|survey_[^/]*)/.*\\.pdf(?:$|[?#])",
+            "(?i)/(?:supplement|Supplement)[^/]*\\.pdf(?:$|[?#])"
+          ]
+        },
+        {
+          "id": "federal_budgets",
+          "cadence": "weekly",
+          "landing_urls": [
+            "https://www.finance.gov.pk/"
+          ],
+          "follow_url_patterns": [
+            "(?i)/fb_[0-9_]+\\.html"
+          ],
+          "max_follow_pages": 20,
+          "document_url_patterns": [
+            "(?i)/budget/.*\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_tdap",
+      "country": "PK",
+      "publisher": "Trade Development Authority of Pakistan",
+      "authority_type": "trade_authority",
+      "official_domains": [
+        "tdap.gov.pk",
+        "www.tdap.gov.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "research_reports",
+          "cadence": "weekly",
+          "landing_urls": [
+            "https://tdap.gov.pk/research-reports/"
+          ],
+          "document_url_patterns": [
+            "(?i)/wp-content/uploads/.*\\.pdf(?:$|[?#])"
+          ],
+          "document_exclude_url_patterns": [
+            "(?i)/wp-content/uploads/2022/08/Export-Prospects-of-Pakistan-for-Motorcycles-industry\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_pama",
+      "country": "PK",
+      "publisher": "Pakistan Automotive Manufacturers Association",
+      "authority_type": "trade_body",
+      "official_domains": [
+        "pama.org.pk",
+        "www.pama.org.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "monthly_production_sales",
+          "cadence": "daily",
+          "landing_urls": [
+            "https://pama.org.pk/monthly-production-sales-of-vehicles/"
+          ],
+          "document_url_patterns": [
+            "(?i)/wp-content/uploads/.*production-sales.*\\.pdf(?:$|[?#])"
+          ],
+          "document_exclude_url_patterns": [
+            "(?i)/wp-content/uploads/2022/06/production-sales-june\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk_sbp",
+      "country": "PK",
+      "publisher": "State Bank of Pakistan",
+      "authority_type": "central_bank",
+      "official_domains": [
+        "sbp.org.pk",
+        "www.sbp.org.pk"
+      ],
+      "enabled": true,
+      "collections": [
+        {
+          "id": "core_reports",
+          "cadence": "daily",
+          "landing_urls": [
+            "https://www.sbp.org.pk/our-operations/publications/half-year-report-the-state-of-pakistans-economy/409",
+            "https://www.sbp.org.pk/our-operations/publications/governors-annual-report/411",
+            "https://www.sbp.org.pk/our-operations/publications/monetary-policy-reports/470"
+          ],
+          "document_url_patterns": [
+            "(?i)/assets/document/publications/.*\\.pdf(?:$|[?#])"
+          ]
+        }
+      ]
+    }
+  ]
+}

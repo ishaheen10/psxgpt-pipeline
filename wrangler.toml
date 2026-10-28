@@ -1,0 +1,8 @@
+name = "psxgpt-pipeline"
+compatibility_date = "2026-06-07"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "psx"
+database_id = "6cd31b68-0737-4d45-a38b-cb225c2f247e"
+preview_database_id = "6cd31b68-0737-4d45-a38b-cb225c2f247e"

@@ -1,0 +1,18 @@
+name = "psxgpt-corpus-api-key-eval"
+main = "api/worker.ts"
+compatibility_date = "2026-07-27"
+compatibility_flags = ["global_fetch_strictly_public"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "psx"
+database_id = "6cd31b68-0737-4d45-a38b-cb225c2f247e"
+
+[[d1_databases]]
+binding = "KEY_DB"
+database_name = "psxgpt-corpus-key-eval-20260729"
+database_id = "2692eeb9-53bc-4ca8-a004-708cf13ae6ba"
+
+[[r2_buckets]]
+binding = "SOURCE_BUCKET"
+bucket_name = "psx"

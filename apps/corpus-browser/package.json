@@ -1,0 +1,57 @@
+{
+  "name": "psxgpt-corpus-browser",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
+    "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
+    "test": "npm run build && node --experimental-strip-types --test tests/*.test.mjs",
+    "eval:retrieval": "node scripts/eval-retrieval.mjs",
+    "eval:retrieval:50": "node scripts/eval-retrieval-50.mjs",
+    "eval:temporal": "node scripts/eval-temporal-retrieval.mjs",
+    "eval:context": "node scripts/eval-context-quality.mjs",
+    "eval:router-variety": "tsx scripts/eval-router-variety.ts",
+    "eval:user-narrative": "tsx scripts/eval-user-narrative.ts",
+    "eval:user-fact-search": "tsx scripts/eval-user-narrative.ts --dataset=evals/user-fact-search-first-turn-v1.json",
+    "eval:key-ablation": "tsx scripts/eval-key-ablation.mjs",
+    "eval:structure-ablation": "tsx scripts/eval-structure-ablation.ts",
+    "eval:page-key-router": "tsx ../../experiments/page_key_eval_v1/eval_router.ts",
+    "sync:industry-packs": "node scripts/sync-industry-packs.mjs",
+    "sync:context-map": "node scripts/build-context-map.mjs",
+    "sync:fertilizer-report": "node scripts/sync-fertilizer-report.mjs",
+    "index:structure": "node scripts/build-structure-index.mjs",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .wrangler"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.111.0",
+    "cytoscape": "^3.34.0",
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.37.1",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/cytoscape": "^3.21.9",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.26",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "react-server-dom-webpack": "19.2.6",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "vinext": "0.0.50",
+    "vite": "8.0.13",
+    "wrangler": "4.92.0"
+  },
+  "type": "module"
+}

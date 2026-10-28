@@ -1,0 +1,269 @@
+{
+  "name": "PSXGPT Serve first-turn document search v1",
+  "version": 1,
+  "source": {
+    "system": "psxgpt-serve production engine history",
+    "selection": "First user run per session, excluding owner, local, and Codex accounts; selected for direct fact or source-page seeking",
+    "freshness_check": "Stored history contains only the current user message and an empty assistant placeholder",
+    "privacy": "No user, session, message, or trace identifiers are retained"
+  },
+  "purpose": "Test whether Ledger behaves like a document search engine for real, fresh, fact-seeking questions.",
+  "judgment_policy": {
+    "route": "The controller should identify the named company, source collection, period, cadence, and independent search facets. It is not expected to plan calculations or an analyst answer.",
+    "retrieval": "Judge the visible result groups as search results: direct topical relevance, correct company and source collection, newest relevant evidence first, and coverage of every requested company or facet. Do not require the browser to calculate or synthesize an answer.",
+    "metrics": [
+      "route_contract_success",
+      "directly_relevant_at_1",
+      "relevant_precision_at_3",
+      "newest_relevant_at_1",
+      "requested_company_group_coverage",
+      "requested_facet_group_coverage",
+      "zero_result_rate",
+      "median_latency_ms",
+      "p90_latency_ms"
+    ]
+  },
+  "cases": [
+    {
+      "id": "engroh_recent_insider_buying",
+      "posture": "announcement lookup",
+      "query": "Get me recent insider buying from annoucnements at ENGROH",
+      "expected_tickers": ["ENGROH"],
+      "must_include_corpora": ["announcement"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "dated insider purchase or sale notices",
+        "person, transaction direction, quantity, and date where disclosed"
+      ]
+    },
+    {
+      "id": "ubl_recent_announcements",
+      "posture": "announcement browse",
+      "query": "Get me recent announcements for UBL",
+      "expected_tickers": ["UBL"],
+      "must_include_corpora": ["announcement"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "recent dated UBL exchange notices",
+        "announcement titles or opening event disclosures"
+      ]
+    },
+    {
+      "id": "ubl_announcements_statements_outlook",
+      "posture": "mixed source lookup",
+      "query": "Get me recent announcements, statements and outlook for UBL",
+      "expected_tickers": ["UBL"],
+      "must_include_corpora": ["announcement", "filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "recent UBL exchange notices",
+        "recent financial statements",
+        "management outlook or forward discussion"
+      ]
+    },
+    {
+      "id": "engroh_cashflow_by_subsidiary",
+      "posture": "table lookup",
+      "query": "Get me the most recent cash flow breakdown by subsidiary for ENGROH",
+      "expected_tickers": ["ENGROH"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "cash-flow or segment table broken down by subsidiary",
+        "most recent available disclosure"
+      ]
+    },
+    {
+      "id": "nrl_segment_breakdown_five_years",
+      "posture": "historical table lookup",
+      "query": "for the past 5 years, tell me the segment breakdown of NRLs base oil segment and other segment",
+      "expected_tickers": ["NRL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "base oil and other segment figures",
+        "historical comparison covering five years"
+      ]
+    },
+    {
+      "id": "fabl_individual_deposit_share",
+      "posture": "financial-note lookup",
+      "query": "so can we find out the breakup for faysal bank's individual deposit vs total deposit",
+      "expected_tickers": ["FABL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "individual or retail deposits",
+        "total deposits from a comparable period"
+      ]
+    },
+    {
+      "id": "cnergy_refinery_marketing_income",
+      "posture": "segment comparison",
+      "query": "compare cynergicos operating income from its refinery business vs its marketing business for the past 5 years",
+      "expected_tickers": ["CNERGY"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "refinery segment operating results",
+        "marketing segment operating results",
+        "five-year comparison"
+      ]
+    },
+    {
+      "id": "gvgl_auto_glass_market_share",
+      "posture": "operating KPI lookup",
+      "query": "what is GVGLs market share in auto glass segment",
+      "expected_tickers": ["GVGL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "auto-glass market share or directly comparable market-position evidence"
+      ]
+    },
+    {
+      "id": "ubl_deposits_six_quarters",
+      "posture": "quarterly series lookup",
+      "query": "Get me ubl deposits for last 6 quarters",
+      "expected_tickers": ["UBL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "total deposits",
+        "six recent quarterly observations"
+      ]
+    },
+    {
+      "id": "interloop_balance_sheet",
+      "posture": "primary-statement lookup",
+      "query": "Show me balance sheet of interloop",
+      "expected_tickers": ["ILP"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "statement of financial position or balance sheet",
+        "assets, liabilities, and equity"
+      ]
+    },
+    {
+      "id": "mebl_liability_breakdown",
+      "posture": "financial-note lookup",
+      "query": "What is the breakup of MEBL’s liabilities",
+      "expected_tickers": ["MEBL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "liability categories and amounts",
+        "balance-sheet or note disclosure"
+      ]
+    },
+    {
+      "id": "glaxo_oncology_segment",
+      "posture": "product-segment lookup",
+      "query": "does Glaxo pakistan have an oncology segment",
+      "expected_tickers": ["GLAXO"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "oncology product, therapeutic-area, or segment evidence"
+      ]
+    },
+    {
+      "id": "bipl_current_account_growth",
+      "posture": "quarterly KPI lookup",
+      "query": "evaluate BIPLs current account growth quarterly",
+      "expected_tickers": ["BIPL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "current-account deposits",
+        "comparable quarterly observations"
+      ]
+    },
+    {
+      "id": "jdws_latest_annual_report_pages",
+      "posture": "source-page browse",
+      "query": "Show me the latest annual report source pages for JDWS and explain what pages are available.",
+      "expected_tickers": ["JDWS"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "latest annual-report pages for JDWS",
+        "representative page headings or page contents"
+      ]
+    },
+    {
+      "id": "ubl_sector_exposure",
+      "posture": "financial-note lookup",
+      "query": "Show me sector level exposure for ubl",
+      "expected_tickers": ["UBL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "industry or economic-sector exposure table",
+        "exposure amounts by sector"
+      ]
+    },
+    {
+      "id": "agic_retained_profits_2025",
+      "posture": "exact line-item lookup",
+      "query": "what is retained profits for 2025 for askari general",
+      "expected_tickers": ["AGIC"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "retained profit or retained earnings amount",
+        "2025 period"
+      ]
+    },
+    {
+      "id": "otsu_syringe_manufacturing",
+      "posture": "product lookup",
+      "query": "syringe manufacturing by OTSU",
+      "expected_tickers": ["OTSU"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "syringe manufacturing or product evidence",
+        "related production capacity or operating disclosure"
+      ]
+    },
+    {
+      "id": "cement_expansion_go_live",
+      "posture": "project-event lookup",
+      "query": "Narrow down Cement companies which have announced capacity expansions and when are those expected to go live.",
+      "expected_tickers": [],
+      "must_include_corpora": [],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "named cement companies and expansion projects",
+        "capacity additions",
+        "expected commissioning dates"
+      ]
+    },
+    {
+      "id": "hbl_latest_cash_balance",
+      "posture": "latest balance lookup",
+      "query": "HBL latest cash balance",
+      "expected_tickers": ["HBL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "cash and balances with treasury banks or equivalent",
+        "newest available filing period"
+      ]
+    },
+    {
+      "id": "bank_exposure_and_capital_ratios",
+      "posture": "peer evidence lookup",
+      "query": "Sector level exposure of UBL HBL ABL and MCB. Include key capital ratios",
+      "expected_tickers": ["ABL", "HBL", "MCB", "UBL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "sector exposure for every requested bank",
+        "capital adequacy or tier capital ratios for every requested bank"
+      ]
+    }
+  ]
+}

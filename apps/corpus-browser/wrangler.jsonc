@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "psxgpt-corpus-browser",
+  "compatibility_date": "2026-07-29",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "main": "./worker/index.ts",
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS"
+  },
+  "images": {
+    "binding": "IMAGES"
+  },
+  "d1_databases": [
+    {
+      "binding": "KEY_DB",
+      "database_name": "psxgpt-corpus-key-eval-20260729",
+      "database_id": "2692eeb9-53bc-4ca8-a004-708cf13ae6ba"
+    }
+  ]
+}

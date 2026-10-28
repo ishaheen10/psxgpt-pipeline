@@ -1,0 +1,284 @@
+{
+  "name": "PSXGPT Serve first-turn narrative retrieval v1",
+  "version": 1,
+  "source": {
+    "system": "psxgpt-serve production engine history",
+    "selection": "First user run per session, excluding owner, local, and Codex accounts",
+    "freshness_check": "Stored history contains only the current user message and an empty assistant placeholder",
+    "privacy": "No user, session, message, or trace identifiers are retained"
+  },
+  "purpose": "Test whether Ledger routes and surfaces answer-bearing PDF pages for real, fresh narrative research questions.",
+  "judgment_policy": {
+    "route": "Exact entity scope, sufficient authoritative corpora, and separate evidence facets where the request has distinct evidence needs.",
+    "retrieval": "Judge the actual Markdown of the first three pages. A page is answer-bearing only when it directly contributes evidence required by the query; a topic mention is not enough.",
+    "metrics": [
+      "route_contract_success",
+      "success_at_1",
+      "answer_bearing_precision_at_3",
+      "excellent_first_three",
+      "entity_coverage",
+      "facet_coverage",
+      "median_latency_ms",
+      "p90_latency_ms"
+    ]
+  },
+  "cases": [
+    {
+      "id": "investment_overview_lotchem",
+      "posture": "investment overview",
+      "query": "Give me a concise investment-quality overview of LOTCHEM: business, latest available financials, current valuation context, recent PSX result announcements, key risks, and source links.",
+      "expected_tickers": ["LOTCHEM"],
+      "must_include_corpora": ["filing", "announcement"],
+      "minimum_facets": 3,
+      "answer_requirements": [
+        "business and operating model",
+        "latest financial performance",
+        "recent company events or result announcements",
+        "company-specific risks"
+      ]
+    },
+    {
+      "id": "potential_investment_prl",
+      "posture": "investment walkthrough",
+      "query": "Walk me through PRL as a potential investment",
+      "expected_tickers": ["PRL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "refinery business economics and operating position",
+        "recent performance",
+        "forward drivers and material risks"
+      ]
+    },
+    {
+      "id": "business_framework_cnergy",
+      "posture": "business understanding",
+      "query": "help me understand the working framework of CYNERGY",
+      "expected_tickers": ["CNERGY"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 1,
+      "answer_requirements": [
+        "how the company makes money",
+        "major operating segments or activities",
+        "key inputs, assets, or distribution model"
+      ]
+    },
+    {
+      "id": "airlink_endeavours_and_financials",
+      "posture": "research brief",
+      "query": "Write me a brief research report on AirLink.\n\nit should apprise me of all their recent endeavours along with giving me its snapshot financials.",
+      "expected_tickers": ["AIRLINK"],
+      "must_include_corpora": ["filing", "announcement"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "recent strategic or operating initiatives",
+        "latest financial snapshot"
+      ]
+    },
+    {
+      "id": "systems_macro_earnings_posture",
+      "posture": "earnings outlook",
+      "query": "Analyse System's recent quarterly results to highlight macro factors supporting or hindering future earnisngs. Or is it the high PE adjusting?",
+      "expected_tickers": ["SYS"],
+      "must_include_corpora": ["filing", "macro"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "recent quarterly operating and financial performance",
+        "macro or industry forces that could support or hinder earnings",
+        "evidence relevant to whether earnings expectations can justify valuation"
+      ]
+    },
+    {
+      "id": "natf_trajectory_deep_dive",
+      "posture": "company trajectory",
+      "query": "Give me a detailed brief on the status of NATF and its trajectory. \nI want you to give me a run down of the main cost and revenue drivers. \nTell me its export plans and product line. \n\nAdditionally, any changes in key personnel including auditors. \nGive me the QoQ trends on OPEX, head count, inventory, and finance cost. \n\nI need a deeper read on what their borrowing lines are costing them.",
+      "expected_tickers": ["NATF"],
+      "must_include_corpora": ["filing", "announcement"],
+      "minimum_facets": 4,
+      "answer_requirements": [
+        "cost and revenue drivers",
+        "export plans and product line",
+        "key personnel or auditor changes",
+        "operating expense, staffing, inventory, finance cost, and borrowing evidence"
+      ]
+    },
+    {
+      "id": "hinoon_sustainable_earnings",
+      "posture": "earnings quality",
+      "query": "Analyse Hinoon financials in terms of profitability. Focus on sustainable earnings and narrow down the segment actually driving the growth. Will the drivers continue the same rate of growth?",
+      "expected_tickers": ["HINOON"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "profitability and earnings quality",
+        "segment or product source of growth",
+        "evidence about persistence of growth drivers"
+      ]
+    },
+    {
+      "id": "fuel_shock_resilience_screen",
+      "posture": "cross-company risk screen",
+      "query": "In a supply driven fuel shock scenario, which companies reflect insulation from risks or ability to pass on impact to protect strong performance",
+      "expected_tickers": [],
+      "must_include_corpora": ["filing", "macro"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "fuel or energy cost exposure",
+        "pricing power or pass-through evidence",
+        "operating resilience across plausible companies"
+      ]
+    },
+    {
+      "id": "interloop_profitability_drags",
+      "posture": "performance diagnosis",
+      "query": "Can you look at Interloop financials? What are the drags on the profitability? Is the recent quarterly data showing any improvement on each? Are there headwinds supporting performance?",
+      "expected_tickers": ["ILP"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "specific profitability drags",
+        "latest quarterly evidence of improvement or deterioration",
+        "forward headwinds and supports"
+      ]
+    },
+    {
+      "id": "pharma_peer_forward_risks",
+      "posture": "peer outlook",
+      "query": "Do analysis of Highnoon and AGP limited. Do a performance analysis and how is that expected to change moving forward. Focus on key headwinds and potential risks like logistics blockage and regulatory restrictions on imports.",
+      "expected_tickers": ["AGP", "HINOON"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 3,
+      "answer_requirements": [
+        "performance for both companies",
+        "import and supply-chain exposure",
+        "regulatory risks and forward implications"
+      ]
+    },
+    {
+      "id": "hubco_growth_outlook",
+      "posture": "growth outlook",
+      "query": "Can you analyse HUBCO performance and growth factors moving forward?",
+      "expected_tickers": ["HUBC"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "recent operating or financial performance",
+        "specific forward growth projects or drivers",
+        "material constraints or risks"
+      ]
+    },
+    {
+      "id": "ismail_segment_drivers",
+      "posture": "segment outlook",
+      "query": "Can you analyse Ismail industries's performance broken down in segments? Also highlight key drivers for future profit growth.",
+      "expected_tickers": ["ISIL"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "segment-level performance",
+        "future profit growth drivers"
+      ]
+    },
+    {
+      "id": "dynea_governance_red_flags",
+      "posture": "governance risk",
+      "query": "for dynea, highlight any red flags that I should keep in mind as an investor in terms of corporate governance",
+      "expected_tickers": ["DYNO"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "board, ownership, related-party, audit, or control evidence",
+        "company-specific governance risks rather than generic boilerplate"
+      ]
+    },
+    {
+      "id": "interloop_budget_and_moat",
+      "posture": "policy and competitive moat",
+      "query": "What implications does the recent budget have for Interloop? Is the moat of the business productivity driven or regulatory benefits?",
+      "expected_tickers": ["ILP"],
+      "must_include_corpora": ["filing", "macro"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "relevant budget or policy changes",
+        "company productivity or operating advantage evidence",
+        "regulatory benefit evidence and a basis for comparing the two explanations"
+      ]
+    },
+    {
+      "id": "natf_divestment_implications",
+      "posture": "transaction implications",
+      "query": "Will National Food's sale of cash and carry in Canada affect future cahflows? what is the implication of the divesting this buisness?",
+      "expected_tickers": ["NATF"],
+      "must_include_corpora": ["announcement", "filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "the divestment terms or disclosure",
+        "the divested operation's financial or strategic relevance",
+        "cash-flow implications grounded in source evidence"
+      ]
+    },
+    {
+      "id": "lci_growth_and_margins",
+      "posture": "growth and margin outlook",
+      "query": "Do a performance analysis for LCI and what will be the key drivers for future growth and margins.",
+      "expected_tickers": ["LCI"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "recent performance",
+        "business or segment drivers of growth",
+        "margin drivers and risks"
+      ]
+    },
+    {
+      "id": "engroh_growth_drivers",
+      "posture": "holding-company outlook",
+      "query": "Do a thorough analysis of Engro holdings performance. Cover performance and highlight factors which would materially drive future growth.",
+      "expected_tickers": ["ENGROH"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "holding-company or portfolio performance",
+        "material subsidiary, project, or capital-allocation growth drivers"
+      ]
+    },
+    {
+      "id": "cement_expansion_timeline",
+      "posture": "industry capacity outlook",
+      "query": "Highlight all ongoing/announced capacity expansion projects for Cement companies and the expected time for going live.",
+      "expected_tickers": [],
+      "must_include_corpora": ["filing", "announcement"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "named cement companies and projects",
+        "capacity or project scope",
+        "expected commissioning timelines"
+      ]
+    },
+    {
+      "id": "lucky_core_cash_cycle_and_projects",
+      "posture": "operating efficiency and growth",
+      "query": "what has LUCKY CORE INDUSTRIES cash conversion cycle been over the past 5 years, and what new projects does it have in its pipeline",
+      "expected_tickers": ["LCI"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "working-capital inputs across five years",
+        "new projects and their status or expected contribution"
+      ]
+    },
+    {
+      "id": "cynergico_underknown_facts",
+      "posture": "open-ended company discovery",
+      "query": "tell me interesting facts about cynergico that may be unknown",
+      "expected_tickers": ["CNERGY"],
+      "must_include_corpora": ["filing"],
+      "minimum_facets": 2,
+      "answer_requirements": [
+        "specific, decision-relevant company facts",
+        "facts beyond headline financial statements",
+        "clear source evidence"
+      ]
+    }
+  ]
+}
